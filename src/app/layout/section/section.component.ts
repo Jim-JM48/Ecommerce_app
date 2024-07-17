@@ -5,34 +5,32 @@ import { ButtonModule } from 'primeng/button';
 import { Router } from '@angular/router';
 import { Product } from '../../product/product.module';
 import { Observable, } from 'rxjs';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { AppState } from '../../state/red.store';
 import { loadProducts } from '../../state/product/products.action';
-import { productSelector, loadingSelector } from '../../state/product/products.reducer';
+import { productSelector, errorSelector } from '../../state/product/products.reducer';
 import { ContactComponent } from '../contact/contact.component';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-section',
   standalone: true,
-  imports: [FilterComponent ,CardModule ,ButtonModule ,ContactComponent],
+  imports: [FilterComponent ,CardModule ,ButtonModule ,ContactComponent ,AsyncPipe],
   templateUrl: './section.component.html',
   styleUrl: './section.component.css'
 })
 export class SectionComponent implements OnInit {
-  product ?: any ;
   products$ : Observable<Product[]>;
-  isLoading$ : Observable<boolean>;
+  errorHandler$ ?: Observable<string | null>;
 
   constructor(private router: Router ,private store: Store<AppState>){
-    this.products$ = this.store.select(productSelector);
-    this.isLoading$ = this.store.select(loadingSelector);
+
+    this.products$ = this.store.pipe(select(productSelector));
+    this.errorHandler$ = this.store.pipe(select(errorSelector));
   }
 
   ngOnInit(): void {
     this.loadDataStore();
-    this.products$.subscribe(state =>
-      this.product = state
-    )
   }
 
   loadDataStore() {

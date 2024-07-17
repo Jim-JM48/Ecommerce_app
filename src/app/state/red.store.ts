@@ -5,9 +5,9 @@ import { ProductEffects } from "./product/products.effect";
 import { cartReducer } from "./cart/cart.reducer";
 
 export interface ProductState {
-  products :Product[]
-  loading :boolean
-  error: string
+  products : Product[]
+  loading : string
+  error: string | null
 }
 
 export interface CartState {

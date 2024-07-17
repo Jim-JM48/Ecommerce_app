@@ -1,7 +1,7 @@
 <div class="card h-96 my-9 mx-5 p-5">
-    @if(myCart.length > 0) {
+    @if(getCartStore$ | async; as cartItems) { @if(cartItems.length > 0) {
     <p-carousel
-        [value]="myCart"
+        [value]="cartItems"
         [numVisible]="3"
         [numScroll]="1"
         [circular]="false"
@@ -33,7 +33,7 @@
                             severity="secondary"
                             [outlined]="true"
                             styleClass="border-none"
-                            (onClick)="removeCart(product)"
+                            (onClick)="removeCart(product, cartItems)"
                         />
                     </span>
                 </div>
@@ -43,11 +43,11 @@
     <div class="font-bold my-5">
         <h2 class="text-yellow-700">Total Price : {{ total }}$</h2>
     </div>
-    }@else {
+    } @else {
     <div
         class="h-full flex justify-center items-center font-bold text-xl text-red-600"
     >
         <h2>Cart Is Empty</h2>
     </div>
-    }
+    } }
 </div>

@@ -3,22 +3,23 @@ import { loadProducts, loadProductsFailure, loadProductsSuccess} from './product
 import { ProductState } from '../red.store';
 
 export const initialState :ProductState = {
-  products: [],
-  loading: false,
-  error: '',
+  products : [],
+  loading: '',
+  error: null,
 }
 
 export const productReducer = createReducer(
   initialState,
-  on(loadProducts ,(state) => ({...state ,loading :true})),
-  on(loadProductsSuccess, (state, { products}) =>({ ...state,
+  on(loadProducts ,(state) => ({...state ,loading :'pending'})),
+  on(loadProductsSuccess, (state, { products }) =>({ ...state,
     products : products,
-    loading: false })),
-  on(loadProductsFailure, (state, { error }) => ({ ...state, error, loading: false })),
+    loading: 'success' })),
+  on(loadProductsFailure, (state, { error }) => ({ ...state, error : error, loading: 'failed' })),
 
 );
 
 let productFs = createFeatureSelector<ProductState>('products');
 
-export let productSelector = createSelector(productFs ,state => state.products);
 export let loadingSelector = createSelector(productFs ,state => state.loading);
+export let productSelector = createSelector(productFs ,(state) => state.products);
+export let errorSelector = createSelector(productFs ,(state) => state.error);

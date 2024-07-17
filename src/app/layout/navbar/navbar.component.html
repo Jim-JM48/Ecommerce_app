@@ -5,7 +5,9 @@
     <div
         class="logo sm:w-1/5 sm:text-center mr-5 flex justify-between items-center"
     >
-        <span class="cursor-pointer hover:text-slate-900"><h1 class="ml-5">LOGO</h1></span>
+        <span class="cursor-pointer hover:text-slate-900"
+            ><h1 class="ml-5">LOGO</h1></span
+        >
         <span class="card">
             <p-toggleButton
                 [(ngModel)]="checked"
@@ -30,13 +32,14 @@
                     >
                 </li>
                 <li
-                    class="hover:bg-orange-500 hover:text-slate-950 p-2 rounded"
+                    class="hover:bg-orange-500 hover:text-slate-950 p-2 rounded cursor-pointer"
+                    (click)="navigateComponent('servicescrolltarget')"
                 >
-                    <a href="#">Service</a>
+                    <a>Service</a>
                 </li>
                 <li
                     class="hover:bg-orange-500 hover:text-slate-950 p-2 rounded cursor-pointer"
-                    (click)="navigateComponent()"
+                    (click)="navigateComponent('contactscrolltarget')"
                 >
                     <a>Contact</a>
                 </li>
@@ -51,11 +54,11 @@
                     "
                     (click)="navigateCart()"
                 >
-                    @if(selfCartLength && selfCartLength > 0){
+                    @if(cartLength$ | async; as cartLength){
                     <p
                         class="inline-block text-base text-gray-900 ml-1 px-2 bg-orange-500 rounded-xl absolute"
                     >
-                        {{ selfCartLength }}
+                        {{ cartLength <= 9 ? cartLength: "+9" }}
                     </p>
                     }
                 </i>
