@@ -1,0 +1,34 @@
+nav {
+    background-color: hsl(45, 87%, 64%);
+    color: white;
+}
+
+@media (max-width: 640px) {
+    nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .links {
+        width: 100%;
+        justify-content: center;
+        ul {
+            width: 100%;
+            flex-direction: column;
+            :first-child {
+                flex-direction: column;
+                justify-content: end;
+            }
+        }
+        li {
+            margin-top: 5px;
+        }
+    }
+    .logo {
+        width: 100%;
+    }
+    .margin-y {
+        margin: 10px 0;
+    }
+}
+

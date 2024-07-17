@@ -1,0 +1,32 @@
+<h2
+    class="text-center p-2 mx-10 bg-yellow-300 text-xl font-bold"
+>
+    Products
+</h2>
+<app-filter></app-filter>
+<div class="grid lg:grid-cols-5 md:grid-cols-3 gap-1 mx-10 my-5">
+    @if (product.length > 0) { @for (item of product ;track $index) {
+    <p-card
+        subheader="{{ maxTitleLength(item.title) }}"
+        [style]="{ height: '300px' }"
+        class="w-44 mx-auto my-2 text-xs"
+    >
+        <ng-template pTemplate="header">
+            <img alt="Card" class="h-40 p-3" [src]="item.image" />
+        </ng-template>
+        <ng-template pTemplate="footer">
+            <div class="flex gap-3 mt-1">
+                <p-button
+                    label="More Details"
+                    severity="secondary"
+                    class="w-full hover:bg-yellow-300 rounded-lg"
+                    styleClass="w-full"
+                    [style]="{ color: 'var(--yellow-900)', padding: '6px' }"
+                    (click)="navigateProduct(item)"
+                />
+            </div>
+        </ng-template>
+    </p-card>
+    } }
+</div>
+<app-contact></app-contact>

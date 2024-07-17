@@ -1,0 +1,21 @@
+<div class="flex justify-center mt-4 gap-2">
+    <div class="flex justify-center">
+        <p-dropdown
+            [options]="category"
+            [(ngModel)]="selectedCategory"
+            (onChange)="dropDownFilterFn()"
+            optionLabel="catName"
+            placeholder="Products Category"
+            [showClear]="true"
+        />
+    </div>
+    <p-selectButton
+        [options]="stateOptions"
+        [(ngModel)]="value"
+        optionLabel="name"
+        optionValue="value"
+        unselectable="true"
+        [disabled]="buttonunSelect()"
+        (onOptionClick)="buttonFilterFn(stateOptions[value - 1].name)"
+    />
+</div>

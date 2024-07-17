@@ -1,0 +1,21 @@
+<p-carousel
+    [value]="imgList"
+    [numVisible]="1"
+    [numScroll]="1"
+    [circular]="true"
+    [responsiveOptions]="responsiveOptions"
+>
+    <ng-template let-slider pTemplate="imgList">
+        <div class="border-1 surface-border border-round mx-2">
+            <div class="my-2">
+                <div class="relative mx-auto">
+                    <img
+                        [src]="slider"
+                        alt="image"
+                        class="border-round rounded-lg"
+                    />
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</p-carousel>

@@ -1,0 +1,43 @@
+<div class="products mx-10 p-1 grid sm:grid-cols-2 gap-4">
+    @if (product.id >= 0) {
+    <p-card styleClass="h-full flex justify-center">
+        <p class="font-bold text-center mb-10">{{ product.title }}</p>
+        <img alt="Card" class="mx-auto" [src]="product.image" />
+        <div class="flex gap-3 mt-5 justify-center items-center">
+            <p-button
+                label="Add to Cart"
+                icon="pi pi-shopping-cart"
+                severity="secondary"
+                styleClass="hover:bg-green-400 p-2"
+                (onClick)="addCart(product)"
+            />
+        </div>
+    </p-card>
+    <div>
+        <p-fieldset
+            legend="details"
+            styleClass="mb-5"
+            [toggleable]="true"
+            [(collapsed)]="collapse"
+            (onAfterToggle)="showDetails($event)"
+        >
+            <p>{{ product.description }}</p>
+        </p-fieldset>
+        @if (collapse() === false) {
+        <div>
+            <p-rating
+                [(ngModel)]="product.rating.rate"
+                readonly="true"
+                cancel="false"
+                [style]="{
+                    'margin-left': '22px'
+                }"
+            />
+        </div>
+        }
+        <p class="ml-5 my-5">
+            Price : <span class="text-red-500">{{ product.price }}$</span>
+        </p>
+    </div>
+    }
+</div>
