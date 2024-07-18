@@ -7,9 +7,10 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
 import { appEffects, appStore } from './state/red.store';
+import { MessageService } from 'primeng/api';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes), provideAnimations(), provideHttpClient(), provideStore(appStore), provideEffects(appEffects)]
+  providers: [provideRouter(routes), provideAnimations(), provideHttpClient(), provideStore(appStore), provideEffects(appEffects) ,MessageService]
 };
 
 

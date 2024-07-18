@@ -13,6 +13,6 @@ import { TagModule } from 'primeng/tag';
 export class CarosulComponent {
 
   imgList = ["../../../assets/images/cottonbro.jpg" ,"../../../assets/images/karolina-grabowsk.jpg","../../../assets/images/voitkevich.jpg"]
-  
+
   responsiveOptions: CarouselResponsiveOptions[]|undefined;
 }

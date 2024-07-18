@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ConfirmDialogModule } from 'primeng/confirmdialog';
-import { ToastModule } from 'primeng/toast';
 import { CarouselModule } from 'primeng/carousel';
 import { ButtonModule } from 'primeng/button';
 import { TagModule } from 'primeng/tag';
@@ -16,7 +14,7 @@ import { AsyncPipe } from '@angular/common';
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [AsyncPipe, CarouselModule, ButtonModule, TagModule ,ConfirmDialogModule, ToastModule],
+  imports: [AsyncPipe, CarouselModule, ButtonModule, TagModule],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.css'
 })

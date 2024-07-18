@@ -14,13 +14,16 @@ import { Observable } from 'rxjs';
 import { storeAddProducts } from '../../state/cart/cart.action';
 import { LocalStorageService } from '../../service/local-storage.service';
 import { AsyncPipe } from '@angular/common';
-import { storeSelector } from '../../state/cart/cart.reducer';
+import { storeLengthSelector, storeSelector } from '../../state/cart/cart.reducer';
 import { Cart } from '../../product/product.module';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
+import { RippleModule } from 'primeng/ripple';
 
 @Component({
   selector: 'app-product',
   standalone: true,
-  imports: [FormsModule ,AsyncPipe ,ButtonModule ,ImageModule ,CardModule ,FieldsetModule ,RatingModule],
+  imports: [FormsModule ,AsyncPipe ,ButtonModule ,ImageModule ,CardModule ,FieldsetModule ,RatingModule ,ToastModule ,RippleModule],
   templateUrl: './product.component.html',
   styleUrl: './product.component.css'
 })
@@ -28,15 +31,18 @@ export class ProductComponent implements OnInit {
   singleProduct$ : Observable<any>;
   productCart$ : Observable<any>;
   isLoading$ : Observable<string>;
+  cartLength$ : Observable<number>;
 
   collapse = signal<boolean>(true);
   dataLoaded = signal<boolean>(true);
   localSetCart :any ;
+  lengthCart : number = 0;
 
-  constructor(private route:ActivatedRoute ,private store: Store<AppState> ,private localstorage :LocalStorageService){
+  constructor(private route:ActivatedRoute ,private store: Store<AppState> ,private localstorage :LocalStorageService ,private messageService: MessageService){
     this.singleProduct$ = this.store.pipe(select(productSelector));
     this.productCart$ = this.store.pipe(select(storeSelector));
     this.isLoading$ = this.store.pipe(select(loadingSelector));
+    this.cartLength$ = this.store.pipe(select(storeLengthSelector));
 
     effect(() => {
       if(localstorage.getItem("details")) {
@@ -53,6 +59,14 @@ export class ProductComponent implements OnInit {
         this.dataLoaded.set(false);
       }
     })
+    this.cartLength$.subscribe(state =>
+      this.lengthCart = state + 1
+    )
+  }
+
+  showWarn() {
+    let msg = "You Exceeded The Amount Of Items Added To Cart Max Number Is : 10"
+    this.messageService.add({ severity: 'error', summary: 'Warn', detail:  msg});
   }
   showDetails(event:any) {
     this.collapse.set(event.collapsed);
@@ -60,10 +74,14 @@ export class ProductComponent implements OnInit {
   }
 
   addCart(item : Cart) {
-      this.store.dispatch(storeAddProducts({Items : item}))
+      if(this.lengthCart > 10) {
+        this.showWarn()
+      }else {
+        this.store.dispatch(storeAddProducts({Items : item}))
       this.productCart$?.forEach(element =>
         this.localSetCart = element
       )
       this.localstorage.setItem('cart', JSON.stringify(this.localSetCart));
+      }
   }
 }

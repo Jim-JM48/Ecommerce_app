@@ -21,7 +21,7 @@ import { AsyncPipe } from '@angular/common';
 })
 export class NavbarComponent implements OnInit {
 
-  cartLength$ ?: Observable<any>;
+  cartLength$ ?: Observable<number>;
   checked: boolean = false;
   widthscreen = signal<number>(innerWidth);
 
