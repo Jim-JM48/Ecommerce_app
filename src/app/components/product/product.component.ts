@@ -65,8 +65,9 @@ export class ProductComponent implements OnInit {
   }
 
   showWarn() {
+    this.messageService.clear();
     let msg = "You Exceeded The Amount Of Items Added To Cart Max Number Is : 10"
-    this.messageService.add({ severity: 'error', summary: 'Warn', detail:  msg});
+    this.messageService.add({key: "maxLengthError", severity: 'info', summary: 'Warning', detail:  msg});
   }
   showDetails(event:any) {
     this.collapse.set(event.collapsed);

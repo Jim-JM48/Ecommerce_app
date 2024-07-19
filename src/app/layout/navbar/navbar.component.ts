@@ -31,7 +31,7 @@ export class NavbarComponent implements OnInit {
   checked: boolean = false;
   widthscreen = signal<number>(innerWidth);
 
-  constructor(private store: Store<AppState> ,private router: Router ,private localstorage :LocalStorageService ,private scroller: ViewportScroller ,public messageService: MessageService){
+  constructor(private store: Store<AppState> ,private router: Router ,private localstorage :LocalStorageService ,private scroller: ViewportScroller ,private messageService: MessageService){
     this.cartLength$ = this.store.pipe(select(storeLengthSelector));
     this.loadingState$ = this.store.pipe(select(loadingSelector));
     effect(() => {
@@ -43,7 +43,9 @@ export class NavbarComponent implements OnInit {
       }
       this.loadingState$?.subscribe((state) => {
         if(state === 'failed') {
+          this.messageService.clear();
           this.messageService.add({
+            key: "fetchDataError",
             severity: "error",
             summary: "Error",
             detail: "Error Fetchig The Products Data",
