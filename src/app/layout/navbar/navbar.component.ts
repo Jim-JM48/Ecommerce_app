@@ -11,22 +11,29 @@ import { ToggleButtonModule } from 'primeng/togglebutton';
 import { FormsModule } from '@angular/forms';
 import { ViewportScroller } from '@angular/common';
 import { AsyncPipe } from '@angular/common';
+import { loadingSelector } from '../../state/product/products.reducer';
+import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
+import { RippleModule } from 'primeng/ripple';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [FormsModule ,RouterOutlet, RouterLink, RouterLinkActive, ToggleButtonModule, AsyncPipe],
+  imports: [FormsModule ,RouterOutlet, RouterLink, RouterLinkActive, ToggleButtonModule, AsyncPipe ,ToastModule ,RippleModule],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent implements OnInit {
 
   cartLength$ ?: Observable<number>;
+  loadingState$ ?: Observable<string | null>;
+
   checked: boolean = false;
   widthscreen = signal<number>(innerWidth);
 
-  constructor(private store: Store<AppState> ,private router: Router ,private localstorage :LocalStorageService ,private scroller: ViewportScroller){
+  constructor(private store: Store<AppState> ,private router: Router ,private localstorage :LocalStorageService ,private scroller: ViewportScroller ,public messageService: MessageService){
     this.cartLength$ = this.store.pipe(select(storeLengthSelector));
+    this.loadingState$ = this.store.pipe(select(loadingSelector));
     effect(() => {
       if(this.localstorage.getItem("cart")) {
         let localStoragedData = JSON.parse(this.localstorage.getItem("cart"));
@@ -34,6 +41,16 @@ export class NavbarComponent implements OnInit {
           this.store.dispatch(storeAddProducts({Items : ele.Items}))
         })
       }
+      this.loadingState$?.subscribe((state) => {
+        if(state === 'failed') {
+          this.messageService.add({
+            severity: "error",
+            summary: "Error",
+            detail: "Error Fetchig The Products Data",
+            sticky: true
+          })
+        }
+      })
     },{ allowSignalWrites: true })
 
   }

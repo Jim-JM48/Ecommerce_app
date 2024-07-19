@@ -15,6 +15,7 @@
         optionLabel="name"
         optionValue="value"
         unselectable="true"
+        styleClass="vs:hidden sm:block"
         [disabled]="buttonunSelect()"
         (onOptionClick)="buttonFilterFn(stateOptions[value - 1].name)"
     />

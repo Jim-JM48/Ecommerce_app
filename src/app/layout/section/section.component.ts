@@ -8,25 +8,23 @@ import { Observable, } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 import { AppState } from '../../state/red.store';
 import { loadProducts } from '../../state/product/products.action';
-import { productSelector, errorSelector } from '../../state/product/products.reducer';
+import { productSelector } from '../../state/product/products.reducer';
 import { ContactComponent } from '../contact/contact.component';
-import { AsyncPipe } from '@angular/common';
+import { CommonModule ,AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-section',
   standalone: true,
-  imports: [FilterComponent ,CardModule ,ButtonModule ,ContactComponent ,AsyncPipe],
+  imports: [CommonModule ,FilterComponent ,CardModule ,ButtonModule ,ContactComponent ,AsyncPipe],
   templateUrl: './section.component.html',
   styleUrl: './section.component.css'
 })
 export class SectionComponent implements OnInit {
   products$ : Observable<Product[]>;
-  errorHandler$ ?: Observable<string | null>;
 
   constructor(private router: Router ,private store: Store<AppState>){
 
     this.products$ = this.store.pipe(select(productSelector));
-    this.errorHandler$ = this.store.pipe(select(errorSelector));
   }
 
   ngOnInit(): void {

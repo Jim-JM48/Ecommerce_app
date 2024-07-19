@@ -5,9 +5,9 @@
     Products
 </h2>
 <app-filter></app-filter>
-<div class="grid lg:grid-cols-5 md:grid-cols-3 gap-1 mx-10 my-5">
-    @if (products$ | async; as products) { @for (product of products ;track
-    $index) {
+@if (products$ | async; as products) {
+<div *ngIf="products.length > 0" class="grid lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 gap-1 mx-10 my-5">
+    @for (product of products ;track $index) {
     <p-card
         subheader="{{ maxTitleLength(product.title) }}"
         [style]="{ height: '300px' }"
@@ -29,6 +29,7 @@
             </div>
         </ng-template>
     </p-card>
-    } }
+    }
 </div>
+}
 <app-contact></app-contact>
