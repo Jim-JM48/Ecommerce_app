@@ -10,7 +10,7 @@ import { AppState } from '../../state/red.store';
 import { loadProducts } from '../../state/product/products.action';
 import { productSelector } from '../../state/product/products.reducer';
 import { ContactComponent } from '../contact/contact.component';
-import { CommonModule ,AsyncPipe } from '@angular/common';
+import { CommonModule, AsyncPipe } from '@angular/common';
 
 @Component({
     selector: 'app-section',

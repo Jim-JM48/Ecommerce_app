@@ -1,35 +1,37 @@
 <h2
-    class="text-center p-2 mx-10 bg-yellow-300 text-xl font-bold"
-    id="servicescrolltarget"
->
-    Products
+  class="text-center p-2 mx-10 bg-yellow-300 text-xl font-bold"
+  id="servicescrolltarget"
+  >
+  Products
 </h2>
 <app-filter></app-filter>
 @if (products$ | async; as products) {
-<div *ngIf="products.length > 0" class="grid lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 gap-1 mx-10 my-5">
-    @for (product of products ;track $index) {
-    <p-card
-        subheader="{{ maxTitleLength(product.title) }}"
-        [style]="{ height: '300px' }"
-        class="w-44 mx-auto my-2 text-xs"
-    >
-        <ng-template pTemplate="header">
+  @if (products.length > 0) {
+    <div class="grid lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 gap-1 mx-10 my-5">
+      @for (product of products ;track $index) {
+        <p-card
+          subheader="{{ maxTitleLength(product.title) }}"
+          [style]="{ height: '300px' }"
+          class="w-44 mx-auto my-2 text-xs"
+          >
+          <ng-template pTemplate="header">
             <img alt="Card" class="h-40 p-3" [src]="product.image" />
-        </ng-template>
-        <ng-template pTemplate="footer">
+          </ng-template>
+          <ng-template pTemplate="footer">
             <div class="flex gap-3 mt-1">
-                <p-button
-                    label="More Details"
-                    severity="secondary"
-                    class="w-full hover:bg-yellow-300 rounded-lg"
-                    styleClass="w-full"
-                    [style]="{ color: 'var(--yellow-900)', padding: '6px' }"
-                    (click)="navigateProduct(product)"
+              <p-button
+                label="More Details"
+                severity="secondary"
+                class="w-full hover:bg-yellow-300 rounded-lg"
+                styleClass="w-full"
+                [style]="{ color: 'var(--yellow-900)', padding: '6px' }"
+                (click)="navigateProduct(product)"
                 />
-            </div>
-        </ng-template>
-    </p-card>
+              </div>
+            </ng-template>
+          </p-card>
+        }
+      </div>
     }
-</div>
-}
-<app-contact></app-contact>
+  }
+  <app-contact></app-contact>
