@@ -9,12 +9,16 @@
             ><h1 class="ml-5">Ecom</h1></span
         >
         <span class="card">
-            <p-toggleButton
-                [(ngModel)]="checked"
-                onIcon="pi pi-bars"
-                offIcon="pi pi-bars"
-                styleClass="sm:hidden"
-            />
+            @if(widthscreen() <= 640) {
+                <p-toggleButton
+                    [(ngModel)]="checked"
+                    onIcon="pi pi-bars"
+                    offIcon="pi pi-bars"
+                    onLabel=""
+                    offLabel=""
+                    styleClass="sm:hidden"
+                />
+            }
         </span>
     </div>
     @if(checked || widthscreen() > 640) {
