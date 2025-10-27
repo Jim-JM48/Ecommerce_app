@@ -4,11 +4,10 @@ import { ButtonModule } from 'primeng/button';
 import { TagModule } from 'primeng/tag';
 
 @Component({
-  selector: 'app-carosul',
-  standalone: true,
-  imports: [CarouselModule ,ButtonModule ,TagModule],
-  templateUrl: './carosul.component.html',
-  styleUrl: './carosul.component.css'
+    selector: 'app-carosul',
+    imports: [CarouselModule, ButtonModule, TagModule],
+    templateUrl: './carosul.component.html',
+    styleUrl: './carosul.component.css'
 })
 export class CarosulComponent {
 

@@ -13,11 +13,10 @@ import { ContactComponent } from '../contact/contact.component';
 import { CommonModule ,AsyncPipe } from '@angular/common';
 
 @Component({
-  selector: 'app-section',
-  standalone: true,
-  imports: [CommonModule ,FilterComponent ,CardModule ,ButtonModule ,ContactComponent ,AsyncPipe],
-  templateUrl: './section.component.html',
-  styleUrl: './section.component.css'
+    selector: 'app-section',
+    imports: [CommonModule, FilterComponent, CardModule, ButtonModule, ContactComponent, AsyncPipe],
+    templateUrl: './section.component.html',
+    styleUrl: './section.component.css'
 })
 export class SectionComponent implements OnInit {
   products$ : Observable<Product[]>;

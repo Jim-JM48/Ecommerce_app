@@ -12,11 +12,10 @@ import { LocalStorageService } from '../../service/local-storage.service';
 import { AsyncPipe } from '@angular/common';
 
 @Component({
-  selector: 'app-cart',
-  standalone: true,
-  imports: [AsyncPipe, CarouselModule, ButtonModule, TagModule],
-  templateUrl: './cart.component.html',
-  styleUrl: './cart.component.css'
+    selector: 'app-cart',
+    imports: [AsyncPipe, CarouselModule, ButtonModule, TagModule],
+    templateUrl: './cart.component.html',
+    styleUrl: './cart.component.css'
 })
 export class CartComponent implements OnInit {
   total : number = 0;

@@ -17,11 +17,10 @@ import { ToastModule } from 'primeng/toast';
 import { RippleModule } from 'primeng/ripple';
 
 @Component({
-  selector: 'app-navbar',
-  standalone: true,
-  imports: [FormsModule ,RouterOutlet, RouterLink, RouterLinkActive, ToggleButtonModule, AsyncPipe ,ToastModule ,RippleModule],
-  templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.css'
+    selector: 'app-navbar',
+    imports: [FormsModule, RouterOutlet, RouterLink, RouterLinkActive, ToggleButtonModule, AsyncPipe, ToastModule, RippleModule],
+    templateUrl: './navbar.component.html',
+    styleUrl: './navbar.component.css'
 })
 export class NavbarComponent implements OnInit {
 

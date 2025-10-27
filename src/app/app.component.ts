@@ -6,11 +6,10 @@ import { SectionComponent } from './layout/section/section.component';
 import { FooterComponent } from './layout/footer/footer.component';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet ,NavbarComponent ,CarosulComponent ,SectionComponent ,FooterComponent],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+    selector: 'app-root',
+    imports: [RouterOutlet, NavbarComponent, CarosulComponent, SectionComponent, FooterComponent],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.css'
 })
 export class AppComponent {
 }

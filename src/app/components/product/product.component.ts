@@ -21,11 +21,10 @@ import { MessageService } from 'primeng/api';
 import { RippleModule } from 'primeng/ripple';
 
 @Component({
-  selector: 'app-product',
-  standalone: true,
-  imports: [FormsModule ,AsyncPipe ,ButtonModule ,ImageModule ,CardModule ,FieldsetModule ,RatingModule ,ToastModule ,RippleModule],
-  templateUrl: './product.component.html',
-  styleUrl: './product.component.css'
+    selector: 'app-product',
+    imports: [FormsModule, AsyncPipe, ButtonModule, ImageModule, CardModule, FieldsetModule, RatingModule, ToastModule, RippleModule],
+    templateUrl: './product.component.html',
+    styleUrl: './product.component.css'
 })
 export class ProductComponent implements OnInit {
   singleProduct$ : Observable<any>;

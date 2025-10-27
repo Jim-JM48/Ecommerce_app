@@ -15,11 +15,10 @@ interface Cate {
 }
 
 @Component({
-  selector: 'app-filter',
-  standalone: true,
-  imports: [FormsModule ,SelectButtonModule ,DropdownModule],
-  templateUrl: './filter.component.html',
-  styleUrl: './filter.component.css'
+    selector: 'app-filter',
+    imports: [FormsModule, SelectButtonModule, DropdownModule],
+    templateUrl: './filter.component.html',
+    styleUrl: './filter.component.css'
 })
 export class FilterComponent {
   value !: number;
