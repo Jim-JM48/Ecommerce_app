@@ -1,5 +1,5 @@
 import { Component ,OnInit ,effect, signal } from '@angular/core';
-import { RouterOutlet, RouterLink, RouterLinkActive, Router } from '@angular/router';
+import { RouterLink, RouterLinkActive, Router } from '@angular/router';
 import { AppState } from '../../state/red.store';
 import { Store, select } from '@ngrx/store';
 import { Cart } from '../../product/product.module';
@@ -18,7 +18,7 @@ import { RippleModule } from 'primeng/ripple';
 
 @Component({
     selector: 'app-navbar',
-    imports: [FormsModule, RouterOutlet, RouterLink, RouterLinkActive, ToggleButtonModule, AsyncPipe, ToastModule, RippleModule],
+    imports: [FormsModule, RouterLink, RouterLinkActive, ToggleButtonModule, AsyncPipe, ToastModule, RippleModule],
     templateUrl: './navbar.component.html',
     styleUrl: './navbar.component.css'
 })

@@ -1,6 +1,6 @@
 <div class="flex justify-center mt-4 gap-2">
     <div class="flex justify-center">
-        <p-dropdown
+        <p-select
             [options]="category"
             [(ngModel)]="selectedCategory"
             (onChange)="dropDownFilterFn()"
@@ -9,7 +9,7 @@
             [showClear]="true"
         />
     </div>
-    <p-selectButton
+    <p-selectbutton
         [options]="stateOptions"
         [(ngModel)]="value"
         optionLabel="name"

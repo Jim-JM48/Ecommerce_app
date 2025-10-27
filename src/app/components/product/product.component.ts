@@ -47,7 +47,7 @@ export class ProductComponent implements OnInit {
       if(localstorage.getItem("details")) {
         this.collapse.set(JSON.parse(localstorage.getItem("details")));
       }
-    },{ allowSignalWrites: true })
+    })
   }
   ngOnInit(): void {
     let productId = this.route.snapshot.params['id'];

@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { SelectButtonModule } from 'primeng/selectbutton';
-import { DropdownModule } from 'primeng/dropdown';
+import { SelectModule } from 'primeng/select';
 import { FormsModule } from '@angular/forms';
 import { AppState } from '../../state/red.store';
 import { Store } from '@ngrx/store';
@@ -16,7 +16,7 @@ interface Cate {
 
 @Component({
     selector: 'app-filter',
-    imports: [FormsModule, SelectButtonModule, DropdownModule],
+    imports: [FormsModule, SelectButtonModule, SelectModule],
     templateUrl: './filter.component.html',
     styleUrl: './filter.component.css'
 })
