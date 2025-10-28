@@ -1,11 +1,4 @@
 
-@media (min-width: 768px) {
-    .products {
-        min-height: calc(100vh - 175px);
-        max-height: calc(100vh - 175px);
-    }
-}
-
 img {
     width: 200px;
     height: 240px;

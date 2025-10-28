@@ -1,74 +1,62 @@
 <nav
     (window:resize)="elementWidth($event)"
-    class="sm:flex gap-10 p-4 text-lg mx-10 my-3 rounded-md z-10"
+    class="flex justify-around p-4 text-lg sticky top-0 z-50"
 >
-    <div
-        class="logo sm:w-1/5 sm:text-center mr-5 flex justify-between items-center"
-    >
-        <span class="cursor-pointer hover:text-slate-900"
-            ><h1 class="ml-5">Ecom</h1></span
-        >
-        <span class="card">
-            @if(widthscreen() <= 640) {
-                <p-toggleButton
-                    [(ngModel)]="checked"
-                    onIcon="pi pi-bars"
-                    offIcon="pi pi-bars"
-                    onLabel=""
-                    offLabel=""
-                    styleClass="sm:hidden"
-                />
-            }
+    <div class="logo">
+        <span class="cursor-pointer text-orange-400 text-2xl">
+            <i class="pi pi-shopping-bag"></i>
+            Ecom
         </span>
     </div>
     @if(checked || widthscreen() > 640) {
-    <div class="links sm:w-4/5 flex text-center">
-        <ul class="w-full flex sm:items-center">
-            <div class="sm:w-3/4 flex sm:justify-around">
-                <li
-                    class="hover:bg-orange-500 hover:text-slate-950 p-2 rounded"
+    <div class="links">
+        <ul class="flex gap-7 sm:items-center">
+            <li>
+                <a
+                    routerLink="/"
+                    routerLinkActive="live"
+                    ariaCurrentWhenActive="page"
+                    [routerLinkActiveOptions]="{ exact: true }"
+                    >Home</a
                 >
-                    <a
-                        routerLink="/home"
-                        routerLinkActive="active"
-                        ariaCurrentWhenActive="page"
-                        >Home</a
-                    >
-                </li>
-                <li
-                    class="hover:bg-orange-500 hover:text-slate-950 p-2 rounded cursor-pointer"
-                    (click)="navigateComponent('servicescrolltarget')"
-                >
-                    <a>Service</a>
-                </li>
-                <li
-                    class="hover:bg-orange-500 hover:text-slate-950 p-2 rounded cursor-pointer"
-                    (click)="navigateComponent('contactscrolltarget')"
-                >
-                    <a>Contact</a>
-                </li>
-            </div>
-            <div class="icons sm:w-1/4 sm:text-center margin-y">
-                <i
-                    class="pi pi-cart-plus relative sm:ml-4 p-2"
-                    style="
-                        color: var(--yellow-800);
-                        font-size: 2rem;
-                        cursor: pointer;
-                    "
-                    (click)="navigateCart()"
-                >
-                    @if(cartLength$ | async; as cartLength){
-                    <p
-                        class="inline-block text-base text-gray-900 ml-1 px-2 bg-orange-500 rounded-xl absolute"
-                    >
-                        {{ cartLength <= 9 ? cartLength : "+9" }}
-                    </p>
-                    }
-                </i>
-            </div>
+            </li>
+            <li
+                (click)="navigateComponent('servicescrolltarget')"
+            >
+                <a>Products</a>
+            </li>
+            <li
+                (click)="navigateComponent('contactscrolltarget')"
+            >
+                <a>Contact</a>
+            </li>
         </ul>
     </div>
     }
-    <p-toast key="fetchDataError" label="Sticky" styleClass="w-2/5 text-base" />
+    <div class="icons space-x-4">
+        <i class="pi pi-search"></i>
+        <i class="pi pi-user"></i>
+        <i
+            class="pi pi-shopping-cart relative"
+            (click)="navigateCart()"
+        >
+            @if(cartLength$ | async; as cartLength){
+            <p
+                class="inline-block text-sm text-gray-900 px-2 bg-orange-500 rounded-xl absolute ml-1 -top-2"
+            >
+                {{ cartLength <= 9 ? cartLength : "+9" }}
+            </p>
+            }
+        </i>
+    </div>
+    @if(widthscreen() <= 640) {
+        <p-toggleButton
+            [(ngModel)]="checked"
+            onIcon="pi pi-bars"
+            offIcon="pi pi-bars"
+            onLabel=""
+            offLabel=""
+        />
+    }
+    <p-toast key="fetchDataError" label="Sticky" position="top-center"/>
 </nav>

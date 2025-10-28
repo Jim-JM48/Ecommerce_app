@@ -5,8 +5,29 @@
     --breakpoint-vs: 359px;
 }
 * {
-    font-family: "Roboto", sans-serif;
-    font-style: normal;
     box-sizing: border-box;
     scroll-behavior: smooth;
+
+    --primary-color: #3b82f6;
+    /* --secondary-color: #1e40af; */
+    --accent-color: #f59e0b;
+    --orange-color: hsl(45, 87%, 64%);
+    --text-dark: #1f2937;
+    /* --text-light: #6b7280; */
+    /* --bg-light: #f9fafb; */
+    --white: #ffffff;
+    /* --success: #10b981; */
+    /* --danger: #ef4444; */
+    /* --border-color: #e5e7eb; */
+
+    --flex-height: calc(100dvh - 9.3rem);
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--white);
 }
