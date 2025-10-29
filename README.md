@@ -4,7 +4,7 @@ Live Website : [Demo](https://ecommerce-app-kappa-five.vercel.app/)
 
 # Ecommerce
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.4.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 20.3.7.
 
 ## Development server
 
