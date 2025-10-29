@@ -4,7 +4,7 @@
             [options]="category"
             [(ngModel)]="selectedCategory"
             (onChange)="dropDownFilterFn()"
-            optionLabel="catName"
+            optionLabel="name"
             placeholder="Products Category"
             [showClear]="true"
         />
@@ -15,7 +15,7 @@
         optionLabel="name"
         optionValue="value"
         unselectable="true"
-        styleClass="vs:hidden sm:block"
+        size="small"
         [disabled]="buttonunSelect()"
         (onOptionClick)="buttonFilterFn(stateOptions[value - 1].name)"
     />

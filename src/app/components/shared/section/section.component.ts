@@ -1,20 +1,20 @@
 import { Component ,OnInit } from '@angular/core';
-import { FilterComponent } from '../../components/filter/filter.component';
-import { CardModule } from 'primeng/card';
-import { ButtonModule } from 'primeng/button';
+import { CommonModule, AsyncPipe ,SlicePipe } from '@angular/common';
 import { Router } from '@angular/router';
-import { Product } from '../../product/product.module';
 import { Observable, } from 'rxjs';
 import { Store, select } from '@ngrx/store';
-import { AppState } from '../../state/red.store';
-import { loadProducts } from '../../state/product/products.action';
-import { productSelector } from '../../state/product/products.reducer';
-import { ContactComponent } from '../contact/contact.component';
-import { CommonModule, AsyncPipe } from '@angular/common';
+import { FilterComponent } from '../filter/filter.component';
+import { SkeletonComponent } from '../skeleton/skeleton.component';
+import { CardModule } from 'primeng/card';
+import { ButtonModule } from 'primeng/button';
+import { Product } from '../../../product/product.module';
+import { AppState } from '../../../state/red.store';
+import { loadProducts } from '../../../state/product/products.action';
+import { productSelector } from '../../../state/product/products.reducer';
 
 @Component({
     selector: 'app-section',
-    imports: [CommonModule, FilterComponent, CardModule, ButtonModule, ContactComponent, AsyncPipe],
+    imports: [CommonModule, FilterComponent ,SkeletonComponent, CardModule, ButtonModule, AsyncPipe ,SlicePipe],
     templateUrl: './section.component.html',
     styleUrl: './section.component.css'
 })
@@ -38,7 +38,4 @@ export class SectionComponent implements OnInit {
     this.router.navigate(['product',element.id]);
   }
 
-  maxTitleLength(name:string) {
-    return name.length > 11 ?name.slice(0,11)+"..." :name;
-  }
 }

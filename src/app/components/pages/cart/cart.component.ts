@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { CarouselModule } from 'primeng/carousel';
 import { ButtonModule } from 'primeng/button';
 import { TagModule } from 'primeng/tag';
-import { Cart, ResponsiveOptions } from '../../product/product.module';
+import { Cart, ResponsiveOptions } from '../../../product/product.module';
 import { Store, select } from '@ngrx/store';
-import { AppState } from '../../state/red.store';
+import { AppState } from '../../../state/red.store';
 import { Observable } from 'rxjs';
-import { storeSelector } from '../../state/cart/cart.reducer';
-import { loadStored, storeDeleteProducts } from '../../state/cart/cart.action';
-import { LocalStorageService } from '../../service/local-storage.service';
+import { storeSelector } from '../../../state/cart/cart.reducer';
+import { loadStored, storeDeleteProducts } from '../../../state/cart/cart.action';
+import { LocalStorageService } from '../../../service/local-storage.service';
 import { AsyncPipe } from '@angular/common';
 
 @Component({

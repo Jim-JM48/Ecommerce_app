@@ -1,16 +1,16 @@
 import { Component, signal } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { Observable } from 'rxjs';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { SelectModule } from 'primeng/select';
-import { FormsModule } from '@angular/forms';
-import { AppState } from '../../state/red.store';
+import { AppState } from '../../../state/red.store';
 import { Store } from '@ngrx/store';
-import { loadProducts } from '../../state/product/products.action';
-import { Observable } from 'rxjs';
-import { productSelector } from '../../state/product/products.reducer';
+import { loadProducts } from '../../../state/product/products.action';
+import { productSelector } from '../../../state/product/products.reducer';
 
 
-interface Cate {
-  catName: string;
+interface Category {
+  name: string;
   cate: string;
 }
 
@@ -21,22 +21,24 @@ interface Cate {
     styleUrl: './filter.component.css'
 })
 export class FilterComponent {
+
+  selectedCategory ?: Category ;
   value !: number;
   filterState$ !: Observable<any>;
   buttonunSelect = signal<boolean>(false);
+
   stateOptions: any[] = [
     { name: 'Show 10 Items', value: 1 ,param : 10},
     { name: 'Show All Items', value: 2 ,param : 0}
   ];
 
-  category : object[] = [
-    {catName : "All Item's" ,cate : "../"},
-    {catName : "Men's Cloth" ,cate : "men's clothing"},
-    {catName : "Women's Cloth" ,cate : "women's clothing"},
-    {catName : "Jewelery" ,cate : "jewelery"},
-    {catName : "Electronics" ,cate : "electronics"}
+  category : Category[] = [
+    {name : "All Item's" ,cate : "../"},
+    {name : "Men's Cloth" ,cate : "men's clothing"},
+    {name : "Women's Cloth" ,cate : "women's clothing"},
+    {name : "Jewelery" ,cate : "jewelery"},
+    {name : "Electronics" ,cate : "electronics"}
   ];
-  selectedCategory ?: Cate ;
 
   constructor(private store: Store<AppState>){
     this.filterState$ = this.store.select(productSelector);
