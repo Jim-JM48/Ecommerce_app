@@ -1,4 +1,4 @@
-import { Component ,OnInit ,effect, signal } from '@angular/core';
+import { Component ,effect, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive, Router } from '@angular/router';
 import { AppState } from '../../state/red.store';
 import { Store, select } from '@ngrx/store';
@@ -22,7 +22,7 @@ import { RippleModule } from 'primeng/ripple';
     templateUrl: './navbar.component.html',
     styleUrl: './navbar.component.css'
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent {
 
   cartLength$ ?: Observable<number>;
   loadingState$ ?: Observable<string | null>;
@@ -52,10 +52,9 @@ export class NavbarComponent implements OnInit {
           })
         }
       })
-    },{ allowSignalWrites: true })
+    },)
 
   }
-  ngOnInit(): void {}
 
   elementWidth(event:any) {
     this.widthscreen.set(event.target.innerWidth);

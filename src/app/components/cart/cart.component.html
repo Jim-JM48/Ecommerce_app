@@ -1,6 +1,6 @@
 <div class="card h-(--flex-height)">
     @if(getCartStore$ | async; as cartItems) { @if(cartItems.length > 0) {
-        <div class="h-full my-9 mx-5 p-5">
+        <div class="h-full mx-5 p-5">
             <p-carousel
                 [value]="cartItems"
                 [numVisible]="3"
@@ -28,7 +28,7 @@
                             <div class="font-semibold ml-4 text-base text-nowrap">
                                 {{ "Price :" + product.Items.price + "$" }}
                             </div>
-                            <span class="mr-4">
+                            <span class="mx-4">
                                 <p-button
                                     icon="pi pi-trash"
                                     severity="secondary"

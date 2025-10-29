@@ -9,3 +9,36 @@
     margin-left: 8px;
     font-size: 1.5rem;
 }
+
+.animate-text {
+    animation: text-slider 1.4s ease-in;
+}
+
+.animate-social {
+    animation: social-slider 2s ease-in;
+}
+
+
+@keyframes text-slider {
+    from {
+        opacity: 0;
+        transform: translateY(-10rem);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+
+    }
+}
+
+@keyframes social-slider {
+    from {
+        opacity: 0;
+        transform: translateX(-10rem);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+
+    }
+}
